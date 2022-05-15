@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block content %}
+    <div class="header">
+      <h2>Symfony CRUD List App</h2>
+      <form action="{{ path('create_task') }}" method="post">
+        <input type="text" name="title" id="myInput" placeholder="Task title..." />
+        <button type="submit" class="addBtn">Add a task</button>
+      </form>
+    </div>
+
+    <ul>
+      {% for task in tasks %}
+      <li {% if task.status %} class="checked" {% endif %}>
+        <a href="{{path('update_task', {'id': task.id})}}"> <span class="task-list-item">{{task.title}}</span> </a
+        ><a onclick="return confirm('Are you want sure to delete?')" href="{{path('delete_task', {'id': task.id})}}"><span class="close">X</span></a>
+      </li>
+      {% endfor %}
+
+      {#  #}
+
+      {#  #}
+      {# <li class="checked">
+        <a href="undone"> <span class="task-list-item">Buy eggs </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Meet John </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Read a book </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Learn Doctrine ORM </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li>
+      <li>
+        <a href="done"> <span class="task-list-item">Prepare a meal </span> </a
+        ><a onclick="return confirm('Are you sure to delete?')" href="delete"><span class="close">X</span></a>
+      </li> #}
+    </ul>
+{% endblock %}
